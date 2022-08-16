@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工数</title>
+</head>
+<body>
+    <h1>Hello {{ user.username }}</h1>
+    {{ projectId }}
+    <div>
+        <form action="" method="GET">
+            <select id="" name="projectId" onChange="submit();">
+                    <option value=""></option>
+                    {% for data in project_data %}
+                    {% if data.id == projectId %}
+                    <option value="{{ data.id }}" selected>{{ data.name }}</option>
+                    {% else %}
+                    <option value="{{ data.id }}">{{ data.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+            </select>
+        </form>
+    </div>
+
+    <div class="project-data">
+        <div class="project-info">
+            <div class="project-name">{{ projectInfo.name }}</div>
+            <div class="project-order">{{ projectInfo.order }}</div>
+            <div class="project-amount">{{ projectInfo.amount }}</div>
+            <div class="project-term">
+                <span>{{ projectInfo.start }}</span>-<span>{{ projectInfo.end }}</span>
+            </div>
+        </div>
+
+        <div class="project-stat">
+            <div class="outsourcing-cost"></div>
+            <div class="ss-cost"></div>
+            <div class="project-cost"></div>
+            <div class="project-cost-rate"></div>
+        </div>
+
+        <div class="project-predict">
+            <div class="predict-project-cost"></div>
+            <div class="predict-project-cost-100-percent"></div>
+        </div>
+    </div>
+
+    <div class="kosu-graph"></div>
+
+    <div class="kosu-table">
+        <table>
+            <!-- <th>                                 -->
+            <!--     <td>{{ kosu.collect_date }}</td> -->
+            <!--     <td></td>                        -->
+            <!--     <td></td>                        -->
+            <!--     <td></td>                        -->
+            <!--     <td></td>                        -->
+            <!-- </th>                                -->
+            {% for k in kosu %}
+            <tr>
+                <td>{{ k.user }}</td>
+                <td>{{ k.project_id }}</td>
+                <td>{{ k.hour }}</td>
+                <td>{{ k.collect_date }}</td>
+                <td>{{ k.is_ss }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>
